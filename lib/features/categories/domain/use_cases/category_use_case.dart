@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:recipes/features/categories/data/dto/category_model.dart';
 
 import '../../../../core/network/error_model.dart';
 import '../repositories/category_repository.dart';
@@ -15,7 +16,7 @@ class CategoryUseCase {
 
   final CategoryRepository _categoryRepository;
 
-  Future<Either<ErrorModel, List<String>>> categories() async {
+  Future<Either<ErrorModel, List<Category>>> categories() async {
     return await _categoryRepository.categories();
   }
 }

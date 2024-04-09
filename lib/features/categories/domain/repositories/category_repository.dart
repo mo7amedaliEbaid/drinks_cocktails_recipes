@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:recipes/features/categories/data/dto/category_model.dart';
 
 import '../../../../core/network/error_model.dart';
 import '../../data/data_sources/category_data_source.dart';
@@ -12,5 +13,5 @@ final categoryRepositoryProvider = Provider<CategoryRepository>(
 );
 
 abstract class CategoryRepository {
-  Future<Either<ErrorModel, List<String>>> categories();
+  Future<Either<ErrorModel, List<Category>>> categories();
 }

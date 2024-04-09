@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipes/core/router/routes.dart';
 import 'package:recipes/features/categories/presentation/home.dart';
+import 'package:recipes/features/drinks/presentation/screens/drinks_by_category.dart';
 
 final goRouterProvider = Provider((ref) => _router);
 
@@ -17,8 +18,8 @@ final GoRouter _router = GoRouter(
           child: const HomeScreen(),
         );
       },
-   /*   routes: [
-        GoRoute(
+      routes: [
+        /*GoRoute(
           path: Routes.productList.name,
           name: Routes.productDetails.name,
           pageBuilder: (context, state) {
@@ -29,17 +30,17 @@ final GoRouter _router = GoRouter(
               ),
             );
           },
-        ),
+        ),*/
         GoRoute(
-          path: Routes.login.name,
-          name: Routes.login.name,
+          path: Routes.drinks.name,
+          name: Routes.drinks.name,
           pageBuilder: (context, state) {
             return const MaterialPage(
-              child: LoginPage(),
+              child: DrinksByCategoryScreen(),
             );
           },
         ),
-      ],*/
+      ],
     ),
   ],
 );

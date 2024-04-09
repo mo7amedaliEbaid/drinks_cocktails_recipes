@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:recipes/core/network/request_handler.dart';
 
@@ -14,9 +16,12 @@ class CategoryRepositoryImpl implements CategoryRepository {
   final CategoryDataSource dataSource;
 
   @override
-  Future<Either<ErrorModel, List<String>>> categories() async {
+  Future<Either<ErrorModel, List<Category>>> categories() async {
     return await dataSource.categories().guard((data) {
-      return Category.fromJson(data);
+      List<Category> categories = (data["drinks"] as List<dynamic>)
+          .map((json) => Category.fromJson(json as Map<String, dynamic>))
+          .toList();
+      return categories;
     });
   }
 }
