@@ -42,6 +42,7 @@ dependencies:
   equatable:
   flutter_riverpod:
   go_router:
+  flutter_svg:
 
 dev_dependencies:
   flutter_test:
@@ -102,6 +103,8 @@ flutter:
   # assets:
   assets:
     - assets/logo/logo.png
+    - assets/svg/
+    - assets/png/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
@@ -116,6 +119,24 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-Medium.ttf
+          weight: 600
+        - asset: assets/fonts/poppins/Poppins-Light.ttf
+          weight: 200
+        - asset: assets/fonts/poppins/Poppins-Bold.ttf
+          weight: 900
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/raleway/Raleway-Medium.ttf
+          weight: 600
+        - asset: assets/fonts/raleway/Raleway-Light.ttf
+          weight: 200
+        - asset: assets/fonts/raleway/Raleway-Bold.ttf
+          weight: 900
+
   # fonts:
   #   - family: Schyler
   #     fonts:
