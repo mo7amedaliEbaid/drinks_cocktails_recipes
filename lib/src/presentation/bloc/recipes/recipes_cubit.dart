@@ -59,27 +59,7 @@ class RecipesCubit extends Cubit<RecipesState> {
     }
   }
 
-  // Get all recipes for a given category
-  Future<void> getRecipesForCategory(String categoryId) async {
-    emit(state.copyWith(
-      loading: true,
-      hasError: false,
-      errorMessage: '',
-    ));
 
-    try {
-      final recipes = await repository.getRecipesForCategory(categoryId);
-      recipesList = recipes;
-      emit(state.copyWith(loading: false, recipes: recipes));
-    } catch (e) {
-      log('[ERROR] - getRecipesForCategory: $e');
-      emit(state.copyWith(
-        loading: false,
-        hasError: true,
-        errorMessage: e.toString(),
-      ));
-    }
-  }
 
   // Get a single recipe for a given id
   Future<void> getRecipe(String id) async {

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipes/src/core/constants.dart';
 import 'package:recipes/src/domain/entities/recipe.dart';
+import 'package:recipes/src/domain/entities/recipe_by_category.dart';
 import 'package:recipes/src/domain/extensions/extensions.dart';
+import 'package:recipes/src/presentation/bloc/filter/filter_cubit.dart';
 import 'package:recipes/src/presentation/bloc/recipes/recipes_cubit.dart';
 import 'package:recipes/src/presentation/pages/recipe_details/recipe_details.dart';
 import 'package:recipes/src/presentation/widgets/custom_card.dart';
@@ -27,13 +29,15 @@ class RecipesForCategory extends StatefulWidget {
 class _RecipesForCategoryState extends State<RecipesForCategory> {
   bool showSearch = false;
 
-  late RecipesCubit cubit;
+  late FilterCubit cubit;
+  late RecipesCubit recipesCubit;
 
   @override
   void initState() {
     super.initState();
-    cubit = context.read<RecipesCubit>()
-      ..getRecipesForCategory(widget.category);
+    cubit = context.read<FilterCubit>()
+      ..filterRecipesByCategory(widget.category);
+    recipesCubit=context.read<RecipesCubit>();
   }
 
   @override
@@ -44,7 +48,7 @@ class _RecipesForCategoryState extends State<RecipesForCategory> {
             ? Text(widget.category)
             : TextField(
                 autofocus: true,
-                onChanged: cubit.searchRecipe,
+                onChanged: recipesCubit.searchRecipe,
                 decoration: const InputDecoration(
                   hintText: 'Search',
                   border: InputBorder.none,
@@ -55,13 +59,13 @@ class _RecipesForCategoryState extends State<RecipesForCategory> {
             icon:
                 showSearch ? const Icon(Icons.close) : const Icon(Icons.search),
             onPressed: () {
-              cubit.clearSearch();
+              recipesCubit.clearSearch();
               setState(() => showSearch = !showSearch);
             },
           ),
         ],
       ),
-      body: BlocBuilder<RecipesCubit, RecipesState>(
+      body: BlocBuilder<FilterCubit, FilterState>(
         builder: (context, state) {
           if (state.hasError) {
             return ErrorMessage(state.errorMessage!);

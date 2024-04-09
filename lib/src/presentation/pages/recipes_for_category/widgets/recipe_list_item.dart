@@ -3,7 +3,7 @@ part of '../recipes_for_category.dart';
 class RecipeListItem extends StatelessWidget {
   const RecipeListItem(this.recipe, {super.key});
 
-  final Recipe recipe;
+  final RecipeByCategory recipe;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class RecipeListItem extends StatelessWidget {
             child: ShimmerImage(
               width: 96,
               height: 96,
-              image: recipe.image,
+              image: recipe.strDrinkThumb.toString(),
             ),
           ),
           const SizedBox(width: 12),
@@ -27,7 +27,7 @@ class RecipeListItem extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  recipe.name,
+                  recipe.strDrink.toString(),
                   style: Theme.of(context).textTheme.titleMedium,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

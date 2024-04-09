@@ -8,6 +8,8 @@ import 'package:recipes/src/data/repositories/recipe_repository_impl.dart';
 import 'package:recipes/src/presentation/bloc/recipes/recipes_cubit.dart';
 import 'package:recipes/src/presentation/pages/home/home.dart';
 
+import 'bloc/filter/filter_cubit.dart';
+
 /// The root widget of the application.
 ///
 /// This widget is responsible for setting up the application theme, creating a
@@ -25,6 +27,11 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<RecipesCubit>(
           create: (_) => RecipesCubit(
+            repository: RecipesRepositoryImplementation(),
+          ),
+        ),
+        BlocProvider<FilterCubit>(
+          create: (_) => FilterCubit(
             repository: RecipesRepositoryImplementation(),
           ),
         ),

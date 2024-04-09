@@ -3,6 +3,7 @@ import 'package:recipes/src/data/api_client.dart';
 import 'package:recipes/src/data/datasources/recipes_datasource.dart';
 import 'package:recipes/src/domain/entities/category.dart';
 import 'package:recipes/src/domain/entities/recipe.dart';
+import 'package:recipes/src/domain/entities/recipe_by_category.dart';
 import 'package:recipes/src/domain/repositories/recipes_repository.dart';
 
 class RecipesRepositoryImplementation implements RecipesRepository {
@@ -23,11 +24,11 @@ class RecipesRepositoryImplementation implements RecipesRepository {
   }
 
   @override
-  Future<List<Recipe>> getRecipesForCategory(String categoryId) async {
+  Future<List<RecipeByCategory>> getRecipesForCategory(String categoryId) async {
     try {
       final response = await _source.getRecipesForCategory(categoryId);
       return (response.data['drinks'] as List)
-          .map((e) => Recipe.fromJson(e))
+          .map((e) => RecipeByCategory.fromJson(e))
           .toList();
     } catch (e) {
       throw CustomException(e.toString());
