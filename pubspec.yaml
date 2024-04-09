@@ -43,6 +43,7 @@ dependencies:
   flutter_riverpod:
   go_router:
   flutter_svg:
+  flutter_native_splash:
 
 dev_dependencies:
   flutter_test:
@@ -57,7 +58,6 @@ dev_dependencies:
   build_runner:
   freezed:
   json_serializable:
-  flutter_native_splash:
   flutter_launcher_icons:
 
 
@@ -79,7 +79,7 @@ flutter_native_splash:
   # of your splash screen to a solid color.  Use background_image to set the background of your
   # splash screen to a png image.  This is useful for gradients. The image will be stretch to the
   # size of the app. Only one parameter can be used, color and background_image cannot both be set.
-  color: "#980046"
+  color: "#42a5f5"
 
   # The image parameter allows you to specify an image used in the splash screen.  It must be a
   # png file and should be sized for 4x pixel density.
