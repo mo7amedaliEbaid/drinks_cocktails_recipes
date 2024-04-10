@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:recipes/configs/configs.dart';
 import 'package:recipes/core/core.dart';
-import 'package:recipes/features/on_boarding/presentation/widgets/custom_elevated_button.dart';
+import 'package:recipes/core/widgets/custom_elevated_button.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -76,12 +76,13 @@ class OnBoardingScreen extends StatelessWidget {
                   onPressed: () => context.goNamed(Routes.home.name),
                   text: "Get Started",
                   color: AppColors.deepBlue,
-                  borderRadius: AppDimensions.normalize(8),
+                  borderRadius: AppDimensions.normalize(14),
                   width: AppDimensions.normalize(72),
                   height: AppDimensions.normalize(24),
                   textStyle: AppText.h3!.copyWith(
                       color: Colors.white, fontFamily: FontFamilies.poppins),
                   isWithArrow: true,
+                  borderColor: AppColors.deepBlue, padding: Space.all(),
                 ),
               ],
             ),

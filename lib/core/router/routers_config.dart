@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipes/core/router/routes.dart';
-import 'package:recipes/features/categories/presentation/home.dart';
+import 'package:recipes/features/home/presentation/screens/home.dart';
 import 'package:recipes/features/drinks/presentation/screens/drinks_by_category.dart';
 import 'package:recipes/features/on_boarding/presentation/screens/on_boarding_screen.dart';
 

@@ -44,6 +44,8 @@ dependencies:
   go_router:
   flutter_svg:
   flutter_native_splash:
+  cached_network_image:
+  shimmer:
 
 dev_dependencies:
   flutter_test:

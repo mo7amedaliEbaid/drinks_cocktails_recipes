@@ -12,7 +12,7 @@ class DrinksNotifier extends StateNotifier<BaseState> {
     required this.ref,
     required this.useCase,
   }) : super(InitialState()) {
-    drinkList(ref.read(selectedCategoryProvider).toString());
+    drinkList(ref.watch(selectedCategoryProvider).toString());
   }
 
   final Ref ref;
