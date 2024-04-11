@@ -14,8 +14,8 @@
 ## ScreenShots
 
 <p float="left">
-   <img src="https://github.com/mo7amedaliEbaid/recipes/blob/6f4601d604286047b41312d8226815c83fe19bc0/screenShots/onBoarding.jpg"  alt="recipes"/>
-   <img src="https://github.com/mo7amedaliEbaid/recipes/blob/6f4601d604286047b41312d8226815c83fe19bc0/screenShots/home.jpg"  alt="recipes"/>
+   <img src="https://github.com/mo7amedaliEbaid/recipes/blob/6f4601d604286047b41312d8226815c83fe19bc0/screenShots/onBoarding.jpg" width="350" alt="recipes"/>
+   <img src="https://github.com/mo7amedaliEbaid/recipes/blob/6f4601d604286047b41312d8226815c83fe19bc0/screenShots/home.jpg"  width="350" alt="recipes"/>
 </p>
 
 
