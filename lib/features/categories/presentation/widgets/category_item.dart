@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:recipes/configs/configs.dart';
 import 'package:recipes/core/core.dart';
@@ -18,21 +17,9 @@ Widget categoryItem(
     child: Column(
       children: [
         Space.yf(.7),
-        ClipOval(
-          child: CachedNetworkImage(
-            height: AppDimensions.normalize(28),
-            imageUrl: image,
-            errorWidget: (context, str, object) {
-              return Image.asset(
-                AppAssets.placeHolder,
-              );
-            },
-            placeholder: (context, str) {
-              return Image.asset(
-                AppAssets.placeHolder,
-              );
-            },
-          ),
+        cachedNetworkOval(
+          radius: AppDimensions.normalize(28),
+          imagePath: image,
         ),
         Space.yf(.7),
         Text(
@@ -42,7 +29,6 @@ Widget categoryItem(
           style: AppText.b2!.copyWith(
             wordSpacing: 0,
             letterSpacing: 0,
-
           ),
         )
       ],

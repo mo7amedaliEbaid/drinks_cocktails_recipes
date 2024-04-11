@@ -15,4 +15,6 @@ sealed class AppAssets {
   static const String menu = "assets/png/menu.png";
   static const String profile = "assets/png/profile.png";
   static const String placeHolder = "assets/png/placeholder.png";
+  static const String cocktail_cup = "assets/png/cocktail_cup.png";
+  static const String stars = "assets/png/stars.png";
 }

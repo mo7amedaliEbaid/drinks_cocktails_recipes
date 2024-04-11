@@ -6,6 +6,8 @@ import 'package:recipes/features/recipe/domain/use_cases/random_recipe_usecase.d
 
 final randomRecipeProvider = FutureProvider<List<Recipe>>(
   (ref) async {
+
+
     final recipe = await ref.watch(randomRecipeUseCaseProvider).recipe();
 
     return recipe.fold(

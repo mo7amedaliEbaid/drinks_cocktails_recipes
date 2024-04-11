@@ -26,12 +26,23 @@ class AppText {
   static TextStyle? l2;
   static TextStyle? l2b;
 
+  //Custom
+  static TextStyle? customStyle;
+
   static init() {
     const b = FontWeight.bold;
     const baseStyle = TextStyle(
       fontFamily: FontFamilies.raleway,
       letterSpacing: 1,
       color: AppColors.deepBlue,
+    );
+
+    customStyle = baseStyle.copyWith(
+      color: Colors.white,
+      fontWeight: FontWeight.w900,
+      fontFamily: FontFamilies.poppins,
+      fontSize: 35,
+      letterSpacing: 0,
     );
 
     h1 = baseStyle.copyWith(fontSize: AppDimensions.font(12.0));
