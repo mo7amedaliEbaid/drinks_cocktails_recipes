@@ -21,7 +21,7 @@ class DrinksNotifier extends StateNotifier<BaseState> {
   List<Drink> drinks = [];
 
   Future<void> drinkList(String categoryId) async {
-    print('drinkList called with categoryId: $categoryId');
+    log('drinkList called with categoryId: $categoryId');
     state = const LoadingState();
     try {
       final result = await useCase.drinks(categoryId);

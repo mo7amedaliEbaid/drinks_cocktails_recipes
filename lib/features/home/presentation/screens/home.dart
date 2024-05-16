@@ -53,7 +53,8 @@ class HomeScreen extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(
                         AppDimensions.normalize(4),
                       ),
-                      borderSide: const BorderSide(color: Colors.grey, width: .2),
+                      borderSide:
+                          const BorderSide(color: Colors.grey, width: .2),
                     ),
                     child: customTextField(
                       controller: controller,
@@ -81,10 +82,15 @@ class HomeScreen extends ConsumerWidget {
                         onTap: () {
                           ref.read(selectedCategoryProvider.notifier).state =
                               categories[index].strCategory.toString();
-        
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  const DrinksByCategoryScreen()));
+
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => DrinksByCategoryScreen(
+                                categoryName:
+                                    categories[index].strCategory.toString(),
+                              ),
+                            ),
+                          );
                         },
                         child: categoryItem(
                             category: categories[index],
@@ -118,7 +124,7 @@ class HomeScreen extends ConsumerWidget {
                   viewportFraction: 0.75,
                   initialPage: 1,
                 );
-               /* Timer.periodic(const Duration(seconds: 3), (timer) {
+                /* Timer.periodic(const Duration(seconds: 3), (timer) {
                   if (controller.page == 2) {
                     controller.animateToPage(
                       0,

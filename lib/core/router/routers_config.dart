@@ -52,16 +52,17 @@ final GoRouter _router = GoRouter(
             );
           },
         ),
-        GoRoute(
+       /* GoRoute(
           path: Routes.drinks.name,
           name: Routes.drinks.name,
           pageBuilder: (context, state) {
+            final String categoryName;
             return MaterialPage(
               key: state.pageKey,
-              child: DrinksByCategoryScreen(),
+              child: DrinksByCategoryScreen(categoryName:categoryName),
             );
           },
-        ),
+        ),*/
       ],
     ),
   ],

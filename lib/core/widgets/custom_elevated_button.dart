@@ -19,9 +19,10 @@ Widget customElevatedButton({
       backgroundColor: color,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius)),
+      disabledForegroundColor: color.withOpacity(0.38),
+      disabledBackgroundColor: color.withOpacity(0.12),
       minimumSize: Size(width, height),
       maximumSize: Size(width, height),
-      onSurface: color,
       padding: padding,
       side: BorderSide(
         width: .6,

@@ -46,6 +46,8 @@ dependencies:
   flutter_native_splash:
   cached_network_image:
   shimmer:
+  infinite_scroll_pagination:
+  flutter_staggered_grid_view:
 
 dev_dependencies:
   flutter_test:
