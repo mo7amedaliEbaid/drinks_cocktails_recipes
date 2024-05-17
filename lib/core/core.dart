@@ -26,6 +26,7 @@ export 'utils/pretty_dio_logger.dart';
 //widgets
 export 'widgets/custom_elevated_button.dart';
 export 'widgets/cached_network_oval.dart';
+export 'widgets/shimmers.dart';
 
 //functions
 export 'functions/has_two_words.dart';

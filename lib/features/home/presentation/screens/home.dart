@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 import 'package:recipes/configs/configs.dart';
 import 'package:recipes/core/core.dart';
@@ -104,7 +103,7 @@ class HomeScreen extends ConsumerWidget {
                   ),
                 );
               },
-              loading: () => const CircularProgressIndicator(),
+              loading: () =>  const ShimmerHorizontalList(),
               error: (error, stackTrace) {
                 log(
                   "CategoriesListView.categoriesState.when",

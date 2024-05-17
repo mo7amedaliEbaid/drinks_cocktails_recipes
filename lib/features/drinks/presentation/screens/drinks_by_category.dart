@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:recipes/core/widgets/shimmers.dart';
 import 'package:recipes/features/drinks/data/dto/drink_model.dart';
 import 'package:recipes/features/drinks/presentation/riverpod/drinks_provider.dart';
 import 'package:recipes/features/drinks/presentation/widgets/drink_item.dart';
@@ -21,7 +22,7 @@ class DrinksByCategoryScreen extends ConsumerWidget {
       ),
       body: SingleChildScrollView(
         child: state is LoadingState
-            ? const CircularProgressIndicator()
+            ? ShimmerGridView()
             : state is SuccessState<List<Drink>> && state.data != null
                 ? state.data!.isNotEmpty
                     ? RefreshIndicator(
