@@ -26,8 +26,14 @@ class MyApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       title: 'Recipes',
       theme: ThemeData(
-          scaffoldBackgroundColor: AppColors.lemonadaColor,
-          fontFamily: FontFamilies.raleway),
+       //   scaffoldBackgroundColor: AppColors.lemonadaColor,
+          fontFamily: FontFamilies.raleway,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.white,
+  //      color: Colors.white
+      )
+
+      ),
     );
   }
 }

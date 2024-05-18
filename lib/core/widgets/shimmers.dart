@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:recipes/core/core.dart';
 import 'package:shimmer/shimmer.dart';
@@ -46,17 +48,17 @@ class ShimmerGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(AppDimensions.normalize(6.3)),
       height: MediaQuery.sizeOf(context).height,
       width: MediaQuery.sizeOf(context).width,
       child: Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.grey[100]!,
+        baseColor: AppColors.lemonadaColor,
+        highlightColor: Colors.white,
         child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 16.0,
-            mainAxisSpacing: 16.0,
+            crossAxisSpacing: AppDimensions.normalize(6.3),
+            mainAxisSpacing: AppDimensions.normalize(6.3),
             childAspectRatio: 3 / 4,
           ),
           itemCount: 8,
@@ -64,7 +66,9 @@ class ShimmerGridView extends StatelessWidget {
             return Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(8.0),
+                borderRadius: BorderRadius.circular(
+                  AppDimensions.normalize(3),
+                ),
               ),
             );
           },

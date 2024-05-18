@@ -25,7 +25,7 @@ class HomeScreen extends ConsumerWidget {
     final categoriesState = ref.watch(categoriesProvider);
     final randomRecipeState = ref.watch(randomRecipeProvider);
     final TextEditingController controller = TextEditingController();
-
+    log(AppDimensions.normalize(39.38).toString());
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: customAppBar(),
