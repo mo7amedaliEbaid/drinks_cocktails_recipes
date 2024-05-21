@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
-import '../../../../core/network/endpoints.dart';
-import '../../../../core/network/rest_client.dart';
+import '../../../../../core/network/endpoints.dart';
+import '../../../../../core/network/rest_client.dart';
 import 'drinks_data_source.dart';
 
 class DrinksDataSourceImpl implements DrinksDataSource {

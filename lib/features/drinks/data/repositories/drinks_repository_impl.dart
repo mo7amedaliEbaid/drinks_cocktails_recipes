@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:recipes/core/network/request_handler.dart';
-import 'package:recipes/features/drinks/data/data_sources/drinks_data_source.dart';
-import 'package:recipes/features/drinks/data/dto/drink_model.dart';
+import 'package:recipes/features/drinks/data/data_sources/drink/drinks_data_source.dart';
+import 'package:recipes/features/drinks/data/dto/drink/drink_model.dart';
 
 import '../../../../core/network/error_model.dart';
 import '../../domain/repositories/drinks_repository.dart';

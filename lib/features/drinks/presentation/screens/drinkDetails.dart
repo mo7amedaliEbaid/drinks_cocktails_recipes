@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:recipes/features/drinks/data/dto/drink/drink_model.dart';
+import 'package:recipes/features/drinks/data/dto/drink_details/drink_details_model.dart';
 import 'package:recipes/features/drinks/presentation/riverpod/drink/drinks_provider.dart';
+import 'package:recipes/features/drinks/presentation/riverpod/drink_details/drink_details_provider.dart';
 import 'package:recipes/features/drinks/presentation/riverpod/drink_details/selected_drink_provider.dart';
-import 'package:recipes/features/drinks/presentation/screens/drinkDetails.dart';
 import 'package:recipes/features/drinks/presentation/widgets/drink_item.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../../../configs/configs.dart';
 import '../../../../core/core.dart';
 
-class DrinksByCategoryScreen extends ConsumerWidget {
-  const DrinksByCategoryScreen({required this.categoryName, super.key});
-
-  final String categoryName;
+class DrinkDetailsScreen extends ConsumerWidget {
+  const DrinkDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(drinksProvider);
+    final state = ref.watch(drinkDetailsProvider);
 
     return Scaffold(
       //  backgroundColor: Colors.white,
@@ -31,7 +32,7 @@ class DrinksByCategoryScreen extends ConsumerWidget {
         ),
         elevation: 2,
         title: Text(
-          categoryName,
+          '',
           style: AppText.h3b!.copyWith(
             fontFamily: FontFamilies.raleway,
           ),
@@ -40,33 +41,11 @@ class DrinksByCategoryScreen extends ConsumerWidget {
       body: SingleChildScrollView(
         child: state is LoadingState
             ? const ShimmerGridView()
-            : state is SuccessState<List<Drink>> && state.data != null
+            : state is SuccessState<List<DrinkDetails>> && state.data != null
                 ? state.data!.isNotEmpty
                     ? RefreshIndicator(
                         onRefresh: () async {},
-                        child: StaggeredGrid.count(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: AppDimensions.normalize(3),
-                          crossAxisSpacing: AppDimensions.normalize(3),
-                          children: List.generate(
-                            state.data!.length,
-                            (index) {
-                              return GestureDetector(
-                                  onTap: () {
-                                    ref
-                                            .read(selectedDrinkProvider.notifier)
-                                            .state =
-                                        state.data![index].idDrink.toString();
-
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const DrinkDetailsScreen()));
-                                  },
-                                  child: drinkItem(drink: state.data![index]));
-                            },
-                          ),
-                        ))
+                        child: Text(state.data!.first.strDrink))
                     : const Text(
                         "Empty",
                       )

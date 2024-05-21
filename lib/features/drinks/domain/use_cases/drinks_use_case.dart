@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:recipes/features/drinks/data/dto/drink_model.dart';
+import 'package:recipes/features/drinks/data/dto/drink/drink_model.dart';
 import 'package:recipes/features/drinks/domain/repositories/drinks_repository.dart';
 
 import '../../../../core/network/error_model.dart';

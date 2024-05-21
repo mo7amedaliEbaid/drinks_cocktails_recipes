@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:recipes/features/drinks/data/dto/drink_model.dart';
+import 'package:recipes/features/drinks/data/dto/drink/drink_model.dart';
 
 import '../../../../core/network/error_model.dart';
-import '../../data/data_sources/drinks_data_source.dart';
+import '../../data/data_sources/drink/drinks_data_source.dart';
 import '../../data/repositories/drinks_repository_impl.dart';
 
 final drinksRepositoryProvider = Provider<DrinksRepository>(

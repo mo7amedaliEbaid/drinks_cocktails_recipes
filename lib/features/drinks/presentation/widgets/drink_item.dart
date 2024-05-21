@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:recipes/core/core.dart';
 import 'package:recipes/configs/configs.dart';
-import 'package:recipes/features/drinks/data/dto/drink_model.dart';
+import 'package:recipes/features/drinks/data/dto/drink/drink_model.dart';
 
 Widget drinkItem({required Drink drink}) {
   return SizedBox(
