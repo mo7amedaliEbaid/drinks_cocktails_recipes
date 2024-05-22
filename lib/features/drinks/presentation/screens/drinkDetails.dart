@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:recipes/features/drinks/data/dto/drink/drink_model.dart';
 import 'package:recipes/features/drinks/data/dto/drink_details/drink_details_model.dart';
 import 'package:recipes/features/drinks/presentation/riverpod/drink/drinks_provider.dart';
@@ -9,6 +10,7 @@ import 'package:recipes/features/drinks/presentation/riverpod/drink_details/drin
 import 'package:recipes/features/drinks/presentation/riverpod/drink_details/selected_drink_provider.dart';
 import 'package:recipes/features/drinks/presentation/widgets/drink_item.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:recipes/features/drinks/presentation/widgets/gradient_top_paint.dart';
 import '../../../../configs/configs.dart';
 import '../../../../core/core.dart';
 
@@ -20,24 +22,8 @@ class DrinkDetailsScreen extends ConsumerWidget {
     final state = ref.watch(drinkDetailsProvider);
 
     return Scaffold(
-      //  backgroundColor: Colors.white,
-      appBar: AppBar(
-        //  backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        elevation: 2,
-        title: Text(
-          '',
-          style: AppText.h3b!.copyWith(
-            fontFamily: FontFamilies.raleway,
-          ),
-        ),
-      ),
+       backgroundColor: Colors.black,
+
       body: SingleChildScrollView(
         child: state is LoadingState
             ? const ShimmerGridView()
@@ -45,7 +31,20 @@ class DrinkDetailsScreen extends ConsumerWidget {
                 ? state.data!.isNotEmpty
                     ? RefreshIndicator(
                         onRefresh: () async {},
-                        child: Text(state.data!.first.strDrink))
+                        child: /*Stack(
+                          children: [*/
+                         //   SvgPicture.asset(AppAssets.top_paint),
+
+                            Stack(
+                              children: [
+
+Container(height: 700,width: 700,color: Colors.amber,),
+                                GradientTopPaint(),
+                              ],
+                            ),
+                       //     Text(state.data!.first.strDrink),
+                         /* ],
+                        )*/)
                     : const Text(
                         "Empty",
                       )
