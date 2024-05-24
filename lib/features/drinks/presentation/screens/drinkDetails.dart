@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
@@ -22,38 +23,65 @@ class DrinkDetailsScreen extends ConsumerWidget {
     final state = ref.watch(drinkDetailsProvider);
 
     return Scaffold(
-       backgroundColor: Colors.black,
-
-      body: SingleChildScrollView(
-        child: state is LoadingState
-            ? const ShimmerGridView()
-            : state is SuccessState<List<DrinkDetails>> && state.data != null
-                ? state.data!.isNotEmpty
-                    ? RefreshIndicator(
-                        onRefresh: () async {},
-                        child: /*Stack(
-                          children: [*/
-                         //   SvgPicture.asset(AppAssets.top_paint),
-
-                            Stack(
+      backgroundColor: Colors.white,
+      body: state is LoadingState
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : state is SuccessState<List<DrinkDetails>> && state.data != null
+              ? state.data!.isNotEmpty
+                  ? RefreshIndicator(
+                      onRefresh: () async {},
+                      child: Stack(
+                        children: [
+                          SvgPicture.asset(AppAssets.top_paint),
+                          Padding(
+                            padding: Space.all(1, 2),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              //   crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-
-Container(height: 700,width: 700,color: Colors.amber,),
-                                GradientTopPaint(),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Icon(Icons.arrow_back_ios),
+                                ),
+                                SizedBox(
+                                  width: AppDimensions.normalize(80),
+                                  height: AppDimensions.normalize(15),
+                                  child: Center(
+                                    child: Text(
+                                      state.data!.first.strDrink,
+                                      style: AppText.h2b,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ),
+                                SvgPicture.asset(AppAssets.heart),
                               ],
                             ),
-                       //     Text(state.data!.first.strDrink),
-                         /* ],
-                        )*/)
-                    : const Text(
-                        "Empty",
-                      )
-                : const Center(
-                    child: Text(
-                      'Error',
-                    ),
+                          ),
+                          Positioned(
+                            top: AppDimensions.normalize(45),
+                            left: 5,
+                            right: 5,
+                            child: Text(
+                              state.data!.first.strInstructions.toString(),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  : const Text(
+                      "Empty",
+                    )
+              : const Center(
+                  child: Text(
+                    'Error',
                   ),
-      ),
+                ),
     );
   }
 }

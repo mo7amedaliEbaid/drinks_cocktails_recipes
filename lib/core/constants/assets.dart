@@ -5,6 +5,7 @@ sealed class AppAssets {
   static const String splash_drink = "assets/svg/splash_drink.svg";
   static const String fruit = "assets/svg/fruit.svg";
   static const String top_paint = "assets/svg/top_paint.svg";
+  static const String heart = "assets/svg/heart.svg";
 
   //Png
   static const String leafPng = "assets/png/leafPng.png";
