@@ -59,9 +59,11 @@ class DrinksByCategoryScreen extends ConsumerWidget {
                                         state.data![index].idDrink.toString();
 
                                     Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const DrinkDetailsScreen()));
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const DrinkDetailsScreen(),
+                                      ),
+                                    );
                                   },
                                   child: drinkItem(drink: state.data![index]));
                             },

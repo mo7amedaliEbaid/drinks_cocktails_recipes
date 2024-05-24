@@ -16,6 +16,9 @@ import 'package:recipes/features/home/presentation/widgets/custom_textfield.dart
 import 'package:recipes/features/recipe/presentation/providers/random_recipe_provider.dart';
 import 'package:recipes/features/recipe/presentation/widgets/recipe_item.dart';
 
+import '../../../drinks/presentation/riverpod/drink_details/selected_drink_provider.dart';
+import '../../../drinks/presentation/screens/drinkDetails.dart';
+
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
@@ -103,7 +106,7 @@ class HomeScreen extends ConsumerWidget {
                   ),
                 );
               },
-              loading: () =>  const ShimmerHorizontalList(),
+              loading: () => const ShimmerHorizontalList(),
               error: (error, stackTrace) {
                 log(
                   "CategoriesListView.categoriesState.when",
@@ -146,12 +149,15 @@ class HomeScreen extends ConsumerWidget {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                            /*  ref.read(selectedCategoryProvider.notifier).state =
-                          categories[index].strCategory.toString();
-        
-                          Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                          const DrinksByCategoryScreen()));*/
+                            ref.read(selectedDrinkProvider.notifier).state =
+                                recipe.first.idDrink.toString();
+
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const DrinkDetailsScreen(),
+                              ),
+                            );
                           },
                           child: RecipeItem(
                             recipe.first,

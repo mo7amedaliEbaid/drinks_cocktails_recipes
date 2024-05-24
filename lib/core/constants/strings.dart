@@ -1,3 +1,14 @@
+sealed class AppStrings {
+  static List<String> ingredients = [
+    'Mint Leaves',
+    'Lemon Wedges',
+    'Lemon Juice',
+    'Ice Cubes',
+    'Sugar',
+    'Club Soda',
+  ];
+}
+
 sealed class NetworkImages {
   static const String ordinary =
       "https://www.thecocktaildb.com/images/media/drink/rrtssw1472668972.jpg";
