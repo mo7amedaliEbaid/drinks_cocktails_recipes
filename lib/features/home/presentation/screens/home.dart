@@ -21,15 +21,33 @@ import '../../../random_drink/presentation/providers/random_recipe_provider.dart
 import '../../../random_drink/presentation/widgets/recipe_item.dart';
 import '../../../search/presentation/provider/serached_drinks_provider.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  HomeScreenState createState() => HomeScreenState();
+}
+
+class HomeScreenState extends ConsumerState<HomeScreen> {
+  final TextEditingController controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     App.init(context);
     final categoriesState = ref.watch(categoriesProvider);
     final randomRecipeState = ref.watch(randomRecipeProvider);
-    final TextEditingController controller = TextEditingController();
+
     final searchState = ref.watch(searchProvider);
     log(AppDimensions.normalize(39.38).toString());
     return Scaffold(
@@ -67,26 +85,40 @@ class HomeScreen extends ConsumerWidget {
                         onSubmitted: (value) {
                           ref.read(searchValueProvider.notifier).state =
                               value.toString();
+
                           showDialog(
                               context: context,
                               builder: (context) {
-                                return Dialog(
-                                  child: SizedBox(
-                                    height:
-                                        MediaQuery.sizeOf(context).height * .3,
-                                    width:
-                                        MediaQuery.sizeOf(context).width * .6,
-                                    child: searchState is SuccessState<
-                                                List<DrinkDetails>> &&
-                                            searchState.data != null
-                                        ? searchState.data!.isNotEmpty
-                                            ? Text(searchState
-                                                .data!.first.strDrink)
-                                            : const Text("Empty")
-                                        : const Text("Error"),
+                                return WillPopScope(
+                                  onWillPop: () async {
+                                   /* ref
+                                        .read(searchValueProvider.notifier)
+                                        .state = '';*/
+                                    return true;
+                                  },
+                                  child: Dialog(
+                                    child: SizedBox(
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              .3,
+                                      width:
+                                          MediaQuery.sizeOf(context).width * .6,
+                                      child: searchState is SuccessState<
+                                                  List<DrinkDetails>> &&
+                                              searchState.data != null
+                                          ? searchState.data!.isNotEmpty
+                                              ? Center(
+                                                  child: Text(searchState
+                                                      .data!.first.strDrink),
+                                                )
+                                              : const Center(
+                                                  child: Text("Empty"))
+                                          : const Center(child: Text("Error")),
+                                    ),
                                   ),
                                 );
                               });
+                          //  ref.read(searchValueProvider.notifier).state = '';
                         }),
                   ),
                   Space.yf(),

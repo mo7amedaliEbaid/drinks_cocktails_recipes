@@ -13,8 +13,10 @@ Widget customTextField(
   return TextField(
     controller: controller,
     onChanged: onChanged,
+    onSubmitted: onSubmitted,
     cursorColor: Colors.grey,
     maxLines: maxLines,
+    textInputAction: TextInputAction.go,
     style: AppText.b1,
     decoration: InputDecoration(
       hintText: hintText,
@@ -29,12 +31,9 @@ Widget customTextField(
         ),
         borderSide: const BorderSide(color: Colors.transparent),
       ),
-
       contentPadding: Space.all(1, .5),
       fillColor: Colors.white,
       filled: true,
-
-
     ),
   );
 }
