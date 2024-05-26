@@ -13,11 +13,10 @@ import 'package:recipes/features/drinks/presentation/screens/drinks_by_category.
 import 'package:recipes/features/home/presentation/widgets/common_row.dart';
 import 'package:recipes/features/home/presentation/widgets/custom_app_bar.dart';
 import 'package:recipes/features/home/presentation/widgets/custom_textfield.dart';
-import 'package:recipes/features/recipe/presentation/providers/random_recipe_provider.dart';
-import 'package:recipes/features/recipe/presentation/widgets/recipe_item.dart';
-
 import '../../../drinks/presentation/riverpod/drink_details/selected_drink_provider.dart';
 import '../../../drinks/presentation/screens/drinkDetails.dart';
+import '../../../random_drink/presentation/providers/random_recipe_provider.dart';
+import '../../../random_drink/presentation/widgets/recipe_item.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});

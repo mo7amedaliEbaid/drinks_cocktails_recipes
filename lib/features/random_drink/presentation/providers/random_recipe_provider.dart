@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:recipes/features/recipe/domain/use_cases/random_recipe_usecase.dart';
+import '../../domain/use_cases/random_recipe_usecase.dart';
 import '../../infrastructure/dto/recipe_model.dart';
 
 final randomRecipeProvider = FutureProvider<List<Recipe>>(

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:recipes/core/core.dart';
-import 'package:recipes/features/recipe/domain/repositories/random_recipe_repository.dart';
+import '../../domain/repositories/random_recipe_repository.dart';
 import '../data_sources/random_recipe_data_source.dart';
 import '../dto/recipe_model.dart';
 
