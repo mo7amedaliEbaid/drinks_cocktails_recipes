@@ -4,7 +4,6 @@ import 'package:recipes/features/search/infrastructure/data_sources/search_data_
 import '../../../../core/network/endpoints.dart';
 import '../../../../core/network/rest_client.dart';
 
-
 class SearchDataSourceImpl implements SearchDataSource {
   SearchDataSourceImpl({
     required this.client,

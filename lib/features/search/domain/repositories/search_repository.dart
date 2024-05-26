@@ -7,7 +7,7 @@ import '../../../../core/network/error_model.dart';
 import '../../infrastructure/repositories/search_repository_impl.dart';
 
 final searchRepositoryProvider = Provider<SearchRepository>(
-      (ref) => SearchRepositoryImpl(
+  (ref) => SearchRepositoryImpl(
     dataSource: ref.watch(searchDataSourceProvider),
   ),
 );

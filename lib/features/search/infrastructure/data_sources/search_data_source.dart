@@ -4,7 +4,6 @@ import 'package:recipes/features/search/infrastructure/data_sources/search_data_
 
 import '../../../../core/network/network.dart';
 
-
 final searchDataSourceProvider = Provider<SearchDataSource>(
   (ref) => SearchDataSourceImpl(
     client: ref.watch(dioProvider),
