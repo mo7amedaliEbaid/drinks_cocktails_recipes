@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +19,17 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
+    - name: Check if Gradle Wrapper Exists
+      run: |
+        if [ ! -f ./gradlew ]; then
+          echo "Gradle wrapper not found, generating..."
+          gradle wrapper
+        else
+          echo "Gradle wrapper found."
+        fi
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+      
     - name: Build with Gradle
       run: ./gradlew build
