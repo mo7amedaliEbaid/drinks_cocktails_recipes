@@ -126,7 +126,7 @@ class HomeScreen extends ConsumerWidget {
                   viewportFraction: 0.75,
                   initialPage: 1,
                 );
-                /* Timer.periodic(const Duration(seconds: 3), (timer) {
+                 Timer.periodic(const Duration(seconds: 3), (timer) {
                   if (controller.page == 2) {
                     controller.animateToPage(
                       0,
@@ -139,7 +139,7 @@ class HomeScreen extends ConsumerWidget {
                       curve: Curves.easeInOut,
                     );
                   }
-                });*/
+                });
                 return SizedBox(
                     height: AppDimensions.normalize(140),
                     child: PageView.builder(

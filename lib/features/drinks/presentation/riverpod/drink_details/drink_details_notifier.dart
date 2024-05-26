@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:recipes/features/drinks/data/dto/drink_details/drink_details_model.dart';
 import 'package:recipes/features/drinks/domain/use_cases/drink_details_use_case.dart';
 import 'package:recipes/features/drinks/presentation/riverpod/drink_details/selected_drink_provider.dart';
 
 import '../../../../../core/state/base_state.dart';
+import '../../../infrastructure/dto/drink_details/drink_details_model.dart';
 
 class DrinkDetailsNotifier extends StateNotifier<BaseState> {
   DrinkDetailsNotifier({

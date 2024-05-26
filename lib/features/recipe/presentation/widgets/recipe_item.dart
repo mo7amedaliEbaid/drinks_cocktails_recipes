@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:recipes/configs/app.dart';
 import 'package:recipes/configs/configs.dart';
-
 import 'package:recipes/core/core.dart';
-
-import '../../data/dto/recipe_model.dart';
-import '../providers/random_recipe_provider.dart';
+import '../../infrastructure/dto/recipe_model.dart';
 
 class RecipeItem extends ConsumerWidget {
   const RecipeItem(this.recipe, {super.key});

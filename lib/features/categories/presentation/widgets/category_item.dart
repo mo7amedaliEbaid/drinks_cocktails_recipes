@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipes/configs/configs.dart';
 import 'package:recipes/core/core.dart';
-import 'package:recipes/features/categories/data/dto/category_model.dart';
+
+import '../../infrastructure/dto/category_model.dart';
 
 Widget categoryItem(
     {required Category category,

@@ -1,21 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:recipes/features/drinks/data/dto/drink/drink_model.dart';
-import 'package:recipes/features/drinks/data/dto/drink_details/drink_details_model.dart';
-import 'package:recipes/features/drinks/presentation/riverpod/drink/drinks_provider.dart';
 import 'package:recipes/features/drinks/presentation/riverpod/drink_details/drink_details_provider.dart';
-import 'package:recipes/features/drinks/presentation/riverpod/drink_details/selected_drink_provider.dart';
-import 'package:recipes/features/drinks/presentation/widgets/drink_item.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:recipes/features/drinks/presentation/widgets/gradient_top_paint.dart';
 import '../../../../configs/configs.dart';
 import '../../../../core/core.dart';
+import '../../infrastructure/dto/drink_details/drink_details_model.dart';
 
 class DrinkDetailsScreen extends ConsumerWidget {
   const DrinkDetailsScreen({super.key});

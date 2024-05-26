@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:recipes/features/drinks/data/dto/drink/drink_model.dart';
 import 'package:recipes/features/drinks/presentation/riverpod/drink/drinks_provider.dart';
 import 'package:recipes/features/drinks/presentation/riverpod/drink_details/selected_drink_provider.dart';
 import 'package:recipes/features/drinks/presentation/screens/drinkDetails.dart';
@@ -8,6 +7,7 @@ import 'package:recipes/features/drinks/presentation/widgets/drink_item.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../../../configs/configs.dart';
 import '../../../../core/core.dart';
+import '../../infrastructure/dto/drink/drink_model.dart';
 
 class DrinksByCategoryScreen extends ConsumerWidget {
   const DrinksByCategoryScreen({required this.categoryName, super.key});

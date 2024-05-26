@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:recipes/features/drinks/data/data_sources/drink_details/drink_details_data_source.dart';
 
 import '../../../../../core/network/endpoints.dart';
 import '../../../../../core/network/rest_client.dart';
+import 'drink_details_data_source.dart';
 
 class DrinkDetailsDataSourceImpl implements DrinkDetailsDataSource {
   DrinkDetailsDataSourceImpl({

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:recipes/features/recipe/data/data_sources/random_recipe_data_source.dart';
+import 'package:recipes/features/recipe/infrastructure/data_sources/random_recipe_data_source.dart';
 
 import '../../../../core/network/endpoints.dart';
 import '../../../../core/network/rest_client.dart';
