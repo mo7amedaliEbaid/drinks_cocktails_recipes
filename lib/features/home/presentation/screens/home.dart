@@ -9,14 +9,17 @@ import 'package:recipes/core/core.dart';
 import 'package:recipes/features/categories/presentation/providers/categories_provider.dart';
 import 'package:recipes/features/categories/presentation/providers/select_category_provider.dart';
 import 'package:recipes/features/categories/presentation/widgets/category_item.dart';
+import 'package:recipes/features/drinks/infrastructure/dto/drink_details/drink_details_model.dart';
 import 'package:recipes/features/drinks/presentation/screens/drinks_by_category.dart';
 import 'package:recipes/features/home/presentation/widgets/common_row.dart';
 import 'package:recipes/features/home/presentation/widgets/custom_app_bar.dart';
 import 'package:recipes/features/home/presentation/widgets/custom_textfield.dart';
+import 'package:recipes/features/search/presentation/provider/search_value_provider.dart';
 import '../../../drinks/presentation/riverpod/drink_details/selected_drink_provider.dart';
 import '../../../drinks/presentation/screens/drinkDetails.dart';
 import '../../../random_drink/presentation/providers/random_recipe_provider.dart';
 import '../../../random_drink/presentation/widgets/recipe_item.dart';
+import '../../../search/presentation/provider/serached_drinks_provider.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -27,6 +30,7 @@ class HomeScreen extends ConsumerWidget {
     final categoriesState = ref.watch(categoriesProvider);
     final randomRecipeState = ref.watch(randomRecipeProvider);
     final TextEditingController controller = TextEditingController();
+    final searchState = ref.watch(searchProvider);
     log(AppDimensions.normalize(39.38).toString());
     return Scaffold(
       backgroundColor: Colors.white,
@@ -58,9 +62,32 @@ class HomeScreen extends ConsumerWidget {
                           const BorderSide(color: Colors.grey, width: .2),
                     ),
                     child: customTextField(
-                      controller: controller,
-                      hintText: "Search",
-                    ),
+                        controller: controller,
+                        hintText: "Search",
+                        onSubmitted: (value) {
+                          ref.read(searchValueProvider.notifier).state =
+                              value.toString();
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return Dialog(
+                                  child: SizedBox(
+                                    height:
+                                        MediaQuery.sizeOf(context).height * .3,
+                                    width:
+                                        MediaQuery.sizeOf(context).width * .6,
+                                    child: searchState is SuccessState<
+                                                List<DrinkDetails>> &&
+                                            searchState.data != null
+                                        ? searchState.data!.isNotEmpty
+                                            ? Text(searchState
+                                                .data!.first.strDrink)
+                                            : const Text("Empty")
+                                        : const Text("Error"),
+                                  ),
+                                );
+                              });
+                        }),
                   ),
                   Space.yf(),
                   commonRow(title: "Categories"),
@@ -125,7 +152,7 @@ class HomeScreen extends ConsumerWidget {
                   viewportFraction: 0.75,
                   initialPage: 1,
                 );
-                 Timer.periodic(const Duration(seconds: 3), (timer) {
+                Timer.periodic(const Duration(seconds: 3), (timer) {
                   if (controller.page == 2) {
                     controller.animateToPage(
                       0,
