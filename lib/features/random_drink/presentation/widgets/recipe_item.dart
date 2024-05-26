@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:recipes/configs/configs.dart';
 import 'package:recipes/core/core.dart';
-import '../../infrastructure/dto/recipe_model.dart';
+import 'package:recipes/features/drinks/infrastructure/dto/drink_details/drink_details_model.dart';
 
 class RecipeItem extends ConsumerWidget {
   const RecipeItem(this.recipe, {super.key});
 
-  final Recipe recipe;
+  final DrinkDetails recipe;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -51,14 +51,16 @@ class RecipeItem extends ConsumerWidget {
                     ],
                   ),
                 ),
-                Positioned(
-                  right: -AppDimensions.normalize(5),
-                  top: AppDimensions.normalize(8),
-                  child: cachedNetworkOval(
-                    radius: AppDimensions.normalize(55),
-                    imagePath: recipe.strDrinkThumb,
-                  ),
-                ),
+                recipe.strDrinkThumb != null
+                    ? Positioned(
+                        right: -AppDimensions.normalize(5),
+                        top: AppDimensions.normalize(8),
+                        child: cachedNetworkOval(
+                          radius: AppDimensions.normalize(55),
+                          imagePath: recipe.strDrinkThumb.toString(),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
                 Positioned(
                   top: AppDimensions.normalize(65),
                   left: AppDimensions.normalize(6),

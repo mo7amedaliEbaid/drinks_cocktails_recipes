@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:recipes/features/drinks/infrastructure/dto/drink_details/drink_details_model.dart';
 import '../../../../core/network/error_model.dart';
-import '../../infrastructure/dto/recipe_model.dart';
 import '../repositories/random_recipe_repository.dart';
 
 final randomRecipeUseCaseProvider = Provider<RandomRecipeUseCase>(
@@ -15,7 +15,7 @@ class RandomRecipeUseCase {
 
   final RandomRecipeRepository _randomRecipeRepository;
 
-  Future<Either<ErrorModel, List<Recipe>>> recipe() async {
+  Future<Either<ErrorModel, List<DrinkDetails>>> recipe() async {
     return await _randomRecipeRepository.recipe();
   }
 }
