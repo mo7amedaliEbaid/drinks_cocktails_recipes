@@ -48,6 +48,8 @@ dependencies:
   shimmer:
   infinite_scroll_pagination:
   flutter_staggered_grid_view:
+  hive:
+  hive_flutter:
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +65,7 @@ dev_dependencies:
   freezed:
   json_serializable:
   flutter_launcher_icons:
+  hive_generator:
 
 
 flutter_launcher_icons:

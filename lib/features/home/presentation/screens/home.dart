@@ -11,13 +11,11 @@ import 'package:recipes/features/categories/presentation/providers/categories_pr
 import 'package:recipes/features/categories/presentation/providers/select_category_provider.dart';
 import 'package:recipes/features/categories/presentation/widgets/category_item.dart';
 import 'package:recipes/features/drinks/infrastructure/dto/drink_details/drink_details_model.dart';
-import 'package:recipes/features/drinks/presentation/screens/drinks_by_category.dart';
 import 'package:recipes/features/home/presentation/widgets/common_row.dart';
 import 'package:recipes/features/home/presentation/widgets/custom_app_bar.dart';
 import 'package:recipes/features/home/presentation/widgets/custom_textfield.dart';
 import 'package:recipes/features/search/presentation/provider/search_value_provider.dart';
 import '../../../drinks/presentation/riverpod/drink_details/selected_drink_provider.dart';
-import '../../../drinks/presentation/screens/drinkDetails.dart';
 import '../../../random_drink/presentation/providers/random_recipe_provider.dart';
 import '../../../random_drink/presentation/widgets/recipe_item.dart';
 import '../../../search/presentation/provider/serached_drinks_provider.dart';
@@ -92,7 +90,7 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
                               builder: (context) {
                                 return WillPopScope(
                                   onWillPop: () async {
-                                   /* ref
+                                    /* ref
                                         .read(searchValueProvider.notifier)
                                         .state = '';*/
                                     return true;
@@ -147,14 +145,6 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
                             Routes.drinks.name,
                             extra: categories[index].strCategory.toString(),
                           );
-                          /*Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => DrinksByCategoryScreen(
-                                categoryName:
-                                    categories[index].strCategory.toString(),
-                              ),
-                            ),
-                          );*/
                         },
                         child: categoryItem(
                             category: categories[index],
@@ -188,19 +178,24 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
                   viewportFraction: 0.75,
                   initialPage: 1,
                 );
-                Timer.periodic(const Duration(seconds: 3), (timer) {
-                  if (controller.page == 2) {
-                    controller.animateToPage(
-                      0,
-                      duration: const Duration(seconds: 1),
-                      curve: Curves.easeInOut,
-                    );
-                  } else {
-                    controller.nextPage(
-                      duration: const Duration(seconds: 1),
-                      curve: Curves.easeInOut,
-                    );
-                  }
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  Timer.periodic(const Duration(seconds: 3), (timer) {
+                    // Check if the controller has positions before accessing the page property
+                    if (controller.hasClients) {
+                      if (controller.page == 2) {
+                        controller.animateToPage(
+                          0,
+                          duration: const Duration(seconds: 1),
+                          curve: Curves.easeInOut,
+                        );
+                      } else {
+                        controller.nextPage(
+                          duration: const Duration(seconds: 1),
+                          curve: Curves.easeInOut,
+                        );
+                      }
+                    }
+                  });
                 });
                 return SizedBox(
                     height: AppDimensions.normalize(140),
@@ -216,13 +211,6 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
                             context.goNamed(
                               Routes.drinkDetails.name,
                             );
-/*
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const DrinkDetailsScreen(),
-                              ),
-                            );*/
                           },
                           child: RecipeItem(
                             recipe.first,

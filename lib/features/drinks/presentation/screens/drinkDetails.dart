@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:recipes/features/drinks/presentation/riverpod/drink_details/drink_details_provider.dart';
 import '../../../../configs/configs.dart';
 import '../../../../core/core.dart';
+import '../../../favourites/presentation/riverpod/favourites_provider.dart';
 import '../../infrastructure/dto/drink_details/drink_details_model.dart';
 
 class DrinkDetailsScreen extends ConsumerWidget {
@@ -12,6 +13,7 @@ class DrinkDetailsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(drinkDetailsProvider);
+    final favoriteDrinks = ref.watch(favoriteDrinksNotifierProvider);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -66,7 +68,47 @@ class DrinkDetailsScreen extends ConsumerWidget {
                                         ),
                                       ),
                                     ),
-                                    SvgPicture.asset(AppAssets.heart),
+                                    Builder(builder: (context) {
+                                      final isFavorite = ref
+                                          .read(
+                                            favoriteDrinksNotifierProvider
+                                                .notifier,
+                                          )
+                                          .isFavorite(
+                                            state.data!.first.idDrink,
+                                          );
+                                      return GestureDetector(
+                                        onTap: () {
+                                          if (isFavorite) {
+                                            ref
+                                                .read(
+                                                  favoriteDrinksNotifierProvider
+                                                      .notifier,
+                                                )
+                                                .removeFavorite(
+                                                  state.data!.first.idDrink,
+                                                );
+                                          } else {
+                                            ref
+                                                .read(
+                                                  favoriteDrinksNotifierProvider
+                                                      .notifier,
+                                                )
+                                                .addFavorite(
+                                                  state.data!.first,
+                                                );
+                                          }
+                                        },
+                                        child: isFavorite
+                                            ? const Icon(
+                                                Icons.favorite,
+                                                color: Colors.red,
+                                              )
+                                            : SvgPicture.asset(
+                                                AppAssets.heart,
+                                              ),
+                                      );
+                                    }),
                                   ],
                                 ),
                               ),
