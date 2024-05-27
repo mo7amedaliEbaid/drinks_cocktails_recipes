@@ -6,6 +6,7 @@ import 'package:recipes/features/drinks/infrastructure/dto/drink_details/drink_d
 import 'package:recipes/features/home/presentation/screens/home.dart';
 import 'package:recipes/features/drinks/presentation/screens/drinks_by_category.dart';
 import 'package:recipes/features/on_boarding/presentation/screens/on_boarding_screen.dart';
+import 'package:recipes/features/register/presentation/screens/register.dart';
 
 import '../../features/drinks/presentation/screens/drinkDetails.dart';
 import '../../features/favourites/presentation/screens/favourites.dart';

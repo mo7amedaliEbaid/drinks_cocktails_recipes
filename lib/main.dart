@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:recipes/core/core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'features/drinks/infrastructure/dto/drink_details/drink_details_model.dart';
+import 'features/register/infrastructure/dto/user_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +14,8 @@ void main() async {
   Hive.registerAdapter(DrinkDetailsAdapter());
 
   await Hive.openBox<DrinkDetails>('favorites');
-
+  Hive.registerAdapter(UserAdapter());
+  await Hive.openBox<User>('users');
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
   await SystemChrome.setPreferredOrientations([
