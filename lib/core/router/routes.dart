@@ -4,4 +4,5 @@ enum Routes {
   drinkDetails,
   onBoarding,
   drinksByCategory,
+  favorites,
 }

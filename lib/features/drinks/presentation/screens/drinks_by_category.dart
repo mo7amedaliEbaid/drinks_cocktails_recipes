@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipes/features/drinks/presentation/riverpod/drink/drinks_provider.dart';
 import 'package:recipes/features/drinks/presentation/riverpod/drink_details/selected_drink_provider.dart';
-import 'package:recipes/features/drinks/presentation/screens/drinkDetails.dart';
 import 'package:recipes/features/drinks/presentation/widgets/drink_item.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../../../configs/configs.dart';
@@ -58,13 +57,7 @@ class DrinksByCategoryScreen extends ConsumerWidget {
                                             .read(selectedDrinkProvider.notifier)
                                             .state =
                                         state.data![index].idDrink.toString();
-/*
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const DrinkDetailsScreen(),
-                                      ),
-                                    );*/
+
                                     context.goNamed(
                                       Routes.drinkDetails.name,
                                     );
