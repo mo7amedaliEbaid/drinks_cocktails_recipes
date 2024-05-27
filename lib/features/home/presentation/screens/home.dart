@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:recipes/configs/configs.dart';
 import 'package:recipes/core/core.dart';
@@ -110,15 +111,18 @@ class HomeScreen extends ConsumerWidget {
                         onTap: () {
                           ref.read(selectedCategoryProvider.notifier).state =
                               categories[index].strCategory.toString();
-
-                          Navigator.of(context).push(
+                          context.goNamed(
+                            Routes.drinks.name,
+                            extra: categories[index].strCategory.toString(),
+                          );
+                          /*Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => DrinksByCategoryScreen(
                                 categoryName:
                                     categories[index].strCategory.toString(),
                               ),
                             ),
-                          );
+                          );*/
                         },
                         child: categoryItem(
                             category: categories[index],
@@ -177,13 +181,16 @@ class HomeScreen extends ConsumerWidget {
                           onTap: () {
                             ref.read(selectedDrinkProvider.notifier).state =
                                 recipe.first.idDrink.toString();
-
+                            context.goNamed(
+                              Routes.drinkDetails.name,
+                            );
+/*
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) =>
                                     const DrinkDetailsScreen(),
                               ),
-                            );
+                            );*/
                           },
                           child: RecipeItem(
                             recipe.first,

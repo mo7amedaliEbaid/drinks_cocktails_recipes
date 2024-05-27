@@ -6,8 +6,10 @@ import 'package:recipes/features/home/presentation/screens/home.dart';
 import 'package:recipes/features/drinks/presentation/screens/drinks_by_category.dart';
 import 'package:recipes/features/on_boarding/presentation/screens/on_boarding_screen.dart';
 
-final goRouterProvider = Provider((ref) => _router);
+import '../../features/drinks/presentation/screens/drinkDetails.dart';
+import 'custom_transition_page.dart';
 
+final goRouterProvider = Provider((ref) => _router);
 final GoRouter _router = GoRouter(
   routes: [
     GoRoute(
@@ -23,47 +25,38 @@ final GoRouter _router = GoRouter(
         GoRoute(
           path: Routes.home.name,
           name: Routes.home.name,
-          pageBuilder: (context, state) {
-            return CustomTransitionPage<void>(
-              key: state.pageKey,
-              child: const HomeScreen(),
-              barrierDismissible: true,
-              barrierColor: Colors.transparent,
-              opaque: false,
-              transitionDuration: const Duration(milliseconds: 600),
-              reverseTransitionDuration: const Duration(milliseconds: 200),
-              transitionsBuilder: (BuildContext context,
-                  Animation<double> animation,
-                  Animation<double> secondaryAnimation,
-                  Widget child) {
-                return SlideTransition(
-                  position: Tween<Offset>(
-                    begin: const Offset(1.0, 0.0), // Slide from right
-                    end: Offset.zero,
-                  ).animate(
-                    CurvedAnimation(
-                      parent: animation,
-                      curve: Curves.easeInOut,
-                    ),
+          pageBuilder: (context, state) => buildCustomTransitionPage(
+            state,
+            const HomeScreen(),
+          ),
+          routes: [
+            GoRoute(
+              path: Routes.drinks.name,
+              name: Routes.drinks.name,
+              pageBuilder: (context, state) {
+                final String categoryName = state.extra as String;
+                return buildCustomTransitionPage(
+                  state,
+                  DrinksByCategoryScreen(
+                    categoryName: categoryName,
                   ),
-                  child: child,
                 );
               },
-            );
-          },
+            ),
+            GoRoute(
+              path: Routes.drinkDetails.name,
+              name: Routes.drinkDetails.name,
+              pageBuilder: (context, state) {
+                return buildCustomTransitionPage(
+                  state,
+                  const DrinkDetailsScreen(),
+                );
+              },
+            ),
+          ],
         ),
-       /* GoRoute(
-          path: Routes.drinks.name,
-          name: Routes.drinks.name,
-          pageBuilder: (context, state) {
-            final String categoryName;
-            return MaterialPage(
-              key: state.pageKey,
-              child: DrinksByCategoryScreen(categoryName:categoryName),
-            );
-          },
-        ),*/
       ],
     ),
   ],
 );
+

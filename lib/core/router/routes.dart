@@ -1,6 +1,7 @@
 enum Routes {
   home,
   drinks,
-  recipe,
+  drinkDetails,
   onBoarding,
+  drinksByCategory,
 }
