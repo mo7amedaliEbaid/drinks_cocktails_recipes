@@ -66,6 +66,7 @@ dev_dependencies:
   json_serializable:
   flutter_launcher_icons:
   hive_generator:
+  mockito:
 
 
 flutter_launcher_icons:
