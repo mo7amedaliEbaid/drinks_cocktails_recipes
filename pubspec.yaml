@@ -50,6 +50,7 @@ dependencies:
   flutter_staggered_grid_view:
   hive:
   hive_flutter:
+  uuid:
 
 dev_dependencies:
   flutter_test:

@@ -13,6 +13,7 @@ import 'package:recipes/features/categories/presentation/widgets/category_item.d
 import 'package:recipes/features/drinks/infrastructure/dto/drink_details/drink_details_model.dart';
 import 'package:recipes/features/home/presentation/widgets/common_row.dart';
 import 'package:recipes/features/home/presentation/widgets/custom_app_bar.dart';
+import 'package:recipes/features/home/presentation/widgets/custom_drawer.dart';
 import 'package:recipes/features/home/presentation/widgets/custom_textfield.dart';
 import 'package:recipes/features/search/presentation/provider/search_value_provider.dart';
 import '../../../drinks/presentation/riverpod/drink_details/selected_drink_provider.dart';
@@ -29,6 +30,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class HomeScreenState extends ConsumerState<HomeScreen> {
   final TextEditingController controller = TextEditingController();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -50,8 +52,12 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
     final searchState = ref.watch(searchProvider);
     log(AppDimensions.normalize(39.38).toString());
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: Colors.white,
-      appBar: customAppBar(),
+      appBar: customAppBar(
+        scaffoldKey: scaffoldKey,
+      ),
+      drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [
