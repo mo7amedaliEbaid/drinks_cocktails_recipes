@@ -35,71 +35,13 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  freezed_annotation:
-  json_annotation:
-  dio:
-  dartz:
-  equatable:
-  flutter_riverpod:
-  go_router:
-  flutter_svg:
-  flutter_native_splash:
-  cached_network_image:
-  shimmer:
-  infinite_scroll_pagination:
-  flutter_staggered_grid_view:
-  hive:
-  hive_flutter:
-  uuid:
+  http:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^2.0.0
-  build_runner:
-  freezed:
-  json_serializable:
-  flutter_launcher_icons:
-  hive_generator:
-  mockito:
 
-
-flutter_launcher_icons:
-  image_path: "assets/logo/logo.png"
-  android: true
-  adaptive_icon_background: "#980046"
-  adaptive_icon_foreground: "assets/logo/logo.png"
-  ios: true
-  remove_alpha_ios: true
-  web:
-    generate: true
-
-flutter_native_splash:
-  # Customize the parameters below, and run the following command in the terminal:
-  # flutter pub run flutter_native_splash:create
-
-  # color or background_image is the only required parameter.  Use color to set the background
-  # of your splash screen to a solid color.  Use background_image to set the background of your
-  # splash screen to a png image.  This is useful for gradients. The image will be stretch to the
-  # size of the app. Only one parameter can be used, color and background_image cannot both be set.
-  color: "#42a5f5"
-
-  # The image parameter allows you to specify an image used in the splash screen.  It must be a
-  # png file and should be sized for 4x pixel density.
-  image: assets/logo/logo.png
-
-  # The branding property allows you to specify an image used as branding in the splash screen.
-  # It must be a png file. It is supported for Android, iOS and the Web.  For Android 12,
-  # see the Android 12 section below.
-  branding: assets/logo/logo.png
-
-  android_12:
 
 flutter:
 

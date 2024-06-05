@@ -1,47 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:recipes/core/core.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'features/drinks/infrastructure/dto/drink_details/drink_details_model.dart';
-import 'features/register/infrastructure/dto/user_model.dart';
+import 'payment_screen.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  await Hive.initFlutter();
-
-  Hive.registerAdapter(DrinkDetailsAdapter());
-
-  await Hive.openBox<DrinkDetails>('favorites');
-  Hive.registerAdapter(UserAdapter());
-  await Hive.openBox<User>('users');
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
-  runApp(const ProviderScope(child: MyApp()));
+void main() {
+  runApp(MyApp());
 }
 
-class MyApp extends ConsumerWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp.router(
-      routerConfig: ref.read(goRouterProvider),
-      debugShowCheckedModeBanner: false,
-      title: 'Recipes',
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Payment Demo',
       theme: ThemeData(
-          //   scaffoldBackgroundColor: AppColors.lemonadaColor,
-          fontFamily: FontFamilies.raleway,
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.white,
-            //      color: Colors.white
-          )),
+        primarySwatch: Colors.blue,
+      ),
+      home: PaymentScreen(),
     );
   }
 }
